@@ -19,16 +19,16 @@ body {
     display: flex;
     max-width: 1200px;
     margin: 0 auto;
-    overflow-x: hidden; /* Prevents horizontal scroll during animations */
+    overflow-x: hidden;
 }
 
 /* --- ALWAYS-VISIBLE SIDEBAR TOGGLE --- */
 .menu-toggle {
-    display: block; /* Now visible on all screen sizes */
+    display: block;
     position: fixed;
     top: 20px;
     left: 20px;
-    background-color: #3d7069;
+    background-color: #553F64;
     color: white;
     border: none;
     width: 45px;
@@ -36,13 +36,13 @@ body {
     border-radius: 8px;
     font-size: 1.2em;
     cursor: pointer;
-    z-index: 1001; /* Keeps it above the sidebar */
+    z-index: 1001;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     transition: background-color 0.2s;
 }
 
 .menu-toggle:hover {
-    background-color: #264a45;
+    background-color: #42314E;
 }
 
 /* --- SIDEBAR NAVIGATION (OVERLAY STYLE) --- */
@@ -50,20 +50,20 @@ body {
     width: 160px;
     background-color: #ffffff;
     height: 100vh;
-    position: fixed; /* This makes it float over the page */
+    position: fixed;
     top: 0;
-    left: -280px; /* Hides it off-screen to the left */
+    left: -280px;
     padding: 80px 20px 40px 20px; 
-    box-shadow: 4px 0 15px rgba(0,0,0,0.1); /* Adds a drop shadow so it looks like it's floating */
+    box-shadow: 4px 0 15px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    z-index: 1000; /* Ensures it stays on top of your text */
-    transition: left 0.3s ease; /* Smooth sliding animation */
+    z-index: 1000;
+    transition: left 0.3s ease;
 }
 
 .sidebar.active {
-    left: 0; /* Slides into view when the button is clicked */
+    left: 0;
 }
 
 .page-nav {
@@ -84,34 +84,34 @@ body {
 }
 
 .page-nav a:hover {
-    background-color: #e8f0ef;
-    color: #3d7069;
+    background-color: #efeaf2;
+    color: #553F64;
     transform: translateX(5px);
 }
 
 /* --- MAIN CONTENT AREA --- */
 .content {
     flex: 1; 
-    padding: 80px 40px 40px 40px; /* Extra top padding to align with sidebar */
+    padding: 80px 40px 40px 40px;
     max-width: 850px;
     margin: 0 auto;
 }
 
-/* --- HEADER (TITLE CARD) --- */
+/* --- HEADER --- */
 header {
     background-color: #ffffff;
     padding: 40px;
     border-radius: 8px;
     margin-bottom: 30px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.04);
-    border-top: 5px solid #3d7069;
+    border-top: 5px solid #553F64;
 }
 
 header h1 {
     margin: 0;
     font-size: 2.8em;
     font-weight: 700;
-    color: #2a3b45;
+    color: #553F64;
     letter-spacing: -0.5px;
     line-height: 1.2;
 }
@@ -129,14 +129,14 @@ header h1 {
 
 .social-links a {
     font-size: 26px;
-    color: #3d7069;
+    color: #553F64;
     text-decoration: none;
     transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .social-links a:hover {
     transform: translateY(-3px);
-    color: #264a45;
+    color: #42314E;
 }
 
 /* --- SECTION CARDS --- */
@@ -161,7 +161,7 @@ section {
 .section-title {
     margin: 0 0 20px 0;
     font-size: 1.5em;
-    color: #3d7069;
+    color: #553F64;
     border-bottom: 2px solid #eef2f1;
     padding-bottom: 10px;
     display: flex;
@@ -170,7 +170,7 @@ section {
 }
 
 h3 {
-    margin: 15px 0 5px 0;
+    margin: 20px 0 0 0;
     color: #2a3b45;
     font-size: 1.15em;
 }
@@ -178,29 +178,29 @@ h3 {
 .meta-info {
     font-size: 0.95em;
     color: #666;
-    margin-bottom: 10px;
+    margin: 5px 0 0 0;
 }
 
 /* --- LISTS --- */
 ul {
     list-style-type: disc;
     padding-left: 20px;
-    margin-top: 5px;
+    margin: 5px 0 0 0;
 }
 
 li {
-    margin-bottom: 8px;
+    margin: 5px 0 0 0;
 }
 
 a {
-    color: #3d7069;
+    color: #553F64;
     text-decoration: none;
     word-wrap: break-word;
     transition: color 0.2s;
 }
 
 a:hover {
-    color: #264a45;
+    color: 4527a0;
     text-decoration: underline;
 }
 
@@ -218,19 +218,39 @@ a:hover {
     font-size: 0.9em;
     font-weight: 600;
     letter-spacing: 0.3px;
+    transition: opacity 0.3s ease, transform 0.2s ease;
 }
 
 .computational {
-    background-color: #e3f2fd;
-    color: #1565c0;
-    border: 1px solid #bbdefb;
+    background-color: #F4D0DB;
+    color: #8E4B61;
+    border: 1px solid #EBBBC9;
 }
 
 .wet-lab {
-    background-color: #e8f5e9;
-    color: #2e7d32;
-    border: 1px solid #c8e6c9;
+    background-color: #D0E1F4;
+    color: #3E5C8E;
+    border: 1px solid #BBD2EB;
 }
+
+.skill-badge {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+.legend-item {
+    transition: opacity 0.3s ease;
+}
+
+
+.skill-badge.dimmed, .legend-item.dimmed {
+    opacity: 0.25; 
+}
+
 
 /* --- COLLAPSIBLE ACCORDIONS --- */
 details {
@@ -244,7 +264,7 @@ details {
 details summary {
     cursor: pointer;
     font-weight: 600;
-    color: #2a3b45;
+    color: #553F64;
     font-size: 1.05em;
     list-style-type: none;
     display: flex;
@@ -252,10 +272,10 @@ details summary {
 }
 
 details summary::before {
-    content: '\25B6'; 
-    font-size: 0.8em;
+    content: '\25B8'; 
+    font-size: 1.3em;
     margin-right: 12px;
-    color: #3d7069;
+    color: #553F64;
     transition: transform 0.2s;
 }
 
@@ -264,13 +284,13 @@ details[open] summary::before {
 }
 
 details ol, details ul {
-    margin-top: 15px;
+    margin-top: 0px;
     padding-left: 20px;
     font-size: 0.95em;
 }
 
 details li {
-    margin-bottom: 12px;
+    margin-bottom: 0px;
 }
 
 /* --- BACK TO TOP ARROW --- */
@@ -278,7 +298,7 @@ details li {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    background-color: #3d7069;
+    background-color: #553F64;
     color: white;
     width: 45px;
     height: 45px;
@@ -312,7 +332,7 @@ details li {
     }
     
     .content {
-        padding: 80px 20px 20px 20px; /* Slightly tighter padding for smaller screens */
+        padding: 80px 20px 20px 20px;
     }
     
     header {

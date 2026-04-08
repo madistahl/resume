@@ -45,12 +45,12 @@
                     <h2 class="section-title"><i class="fas fa-code-branch"></i> Technical Skills</h2>
                     
                     <div class="skills-legend" style="margin-bottom: 15px; font-size: 0.9em; display: flex; gap: 15px;">
-                        <span style="display: flex; align-items: center; gap: 5px;">
-                            <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background-color: #e8f5e9; border: 1px solid #c8e6c9;"></span>
+                        <span id="legend-wet" class="legend-item" style="display: flex; align-items: center; gap: 5px; cursor: pointer;">
+                            <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background-color: #D0E1F4; border: 1px solid #BBD2EB;"></span>
                             Molecular & Cellular Techniques
                         </span>
-                        <span style="display: flex; align-items: center; gap: 5px;">
-                            <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background-color: #e3f2fd; border: 1px solid #bbdefb;"></span>
+                        <span id="legend-comp" class="legend-item" style="display: flex; align-items: center; gap: 5px; cursor: pointer;">
+                            <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background-color: #F4D0DB; border: 1px solid #EBBBC9;"></span>
                             Computational Skills
                         </span>
                     </div>
@@ -253,6 +253,36 @@
                 link.addEventListener('click', () => {
                     sidebar.classList.remove('active');
                 });
+            });
+
+            // Skill Badge Spotlight Logic
+            const legendWet = document.getElementById('legend-wet');
+            const legendComp = document.getElementById('legend-comp');
+            const wetBadges = document.querySelectorAll('.wet-lab');
+            const compBadges = document.querySelectorAll('.computational');
+
+            // When hovering over "Molecular & Cellular"
+            legendWet.addEventListener('mouseenter', () => {
+                // Dim the computational badges AND the computational label
+                compBadges.forEach(badge => badge.classList.add('dimmed'));
+                legendComp.classList.add('dimmed');
+            });
+            legendWet.addEventListener('mouseleave', () => {
+                // Restore everything
+                compBadges.forEach(badge => badge.classList.remove('dimmed'));
+                legendComp.classList.remove('dimmed');
+            });
+
+            // When hovering over "Computational"
+            legendComp.addEventListener('mouseenter', () => {
+                // Dim the wet lab badges AND the wet lab label
+                wetBadges.forEach(badge => badge.classList.add('dimmed'));
+                legendWet.classList.add('dimmed');
+            });
+            legendComp.addEventListener('mouseleave', () => {
+                // Restore everything
+                wetBadges.forEach(badge => badge.classList.remove('dimmed'));
+                legendWet.classList.remove('dimmed');
             });
         </script>
 
