@@ -1,2 +1,2 @@
-# website for cv
+# website for resume
 https://madistahl.github.io/cv/
