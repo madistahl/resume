@@ -1,69 +1,326 @@
-body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.7;
-    margin: 20px;
-    padding: 0;
+/* --- BASE TYPOGRAPHY & SMOOTH SCROLLING --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+html {
+    scroll-behavior: smooth;
 }
 
-header {
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+/* --- OVERALL LAYOUT --- */
+.layout-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow-x: hidden; /* Prevents horizontal scroll during animations */
+}
+
+/* --- ALWAYS-VISIBLE SIDEBAR TOGGLE --- */
+.menu-toggle {
+    display: block; /* Now visible on all screen sizes */
+    position: fixed;
+    top: 20px;
+    left: 20px;
     background-color: #3d7069;
     color: white;
-    padding: 20px;
-    border-radius: 5px;
-    text-align: center;
-    margin: 0 0 10px 0;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    font-size: 1.2em;
+    cursor: pointer;
+    z-index: 1001; /* Keeps it above the sidebar */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: background-color 0.2s;
 }
 
-header a {
-    font-size: 25px;
-    color: white;
-    text-decoration: none;
+.menu-toggle:hover {
+    background-color: #264a45;
 }
 
-h1 {
-    margin: 0;
-    font-size: 2.5em;
-}
-
-h3 {
-    margin: 10px 0 0px;
-}
-
-ul {
-    list-style-type: square;
-    padding-left: 20px;
-    margin-top: 0px;
-}
-
-ol {
-    margin: 10px 0 0 0;
-    padding-left: 20px;
-}
-
-a {
-    color: black;
-    word-wrap: break-word;
-}
-
-.education, .experience, .pubs, .presentations, .awards, .leadership {
-    background: white;
-    border-radius: 5px;
-    padding: 15px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    width: 100%;
+/* --- SIDEBAR NAVIGATION (OVERLAY STYLE) --- */
+.sidebar {
+    width: 160px;
+    background-color: #ffffff;
+    height: 100vh;
+    position: fixed; /* This makes it float over the page */
+    top: 0;
+    left: -280px; /* Hides it off-screen to the left */
+    padding: 80px 20px 40px 20px; 
+    box-shadow: 4px 0 15px rgba(0,0,0,0.1); /* Adds a drop shadow so it looks like it's floating */
+    display: flex;
+    flex-direction: column;
     box-sizing: border-box;
-    overflow: hidden;
+    z-index: 1000; /* Ensures it stays on top of your text */
+    transition: left 0.3s ease; /* Smooth sliding animation */
+}
+
+.sidebar.active {
+    left: 0; /* Slides into view when the button is clicked */
+}
+
+.page-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; 
+}
+
+.page-nav a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 600;
+    padding: 12px 16px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+}
+
+.page-nav a:hover {
+    background-color: #e8f0ef;
+    color: #3d7069;
+    transform: translateX(5px);
+}
+
+/* --- MAIN CONTENT AREA --- */
+.content {
+    flex: 1; 
+    padding: 80px 40px 40px 40px; /* Extra top padding to align with sidebar */
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+/* --- HEADER (TITLE CARD) --- */
+header {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.04);
+    border-top: 5px solid #3d7069;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.8em;
+    font-weight: 700;
+    color: #2a3b45;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+
+.location-tag {
+    color: #666;
+    font-size: 1.1em;
+    margin: 10px 0 20px 0;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    font-size: 26px;
+    color: #3d7069;
+    text-decoration: none;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-3px);
+    color: #264a45;
+}
+
+/* --- SECTION CARDS --- */
+section {
+    scroll-margin-top: 40px; 
+}
+
+.section-card {
+    background: white;
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.08);
 }
 
 .section-title {
-    margin: 0;
-    padding: 10px, 0;
-    background: white;
+    margin: 0 0 20px 0;
+    font-size: 1.5em;
     color: #3d7069;
-    border-radius: 5px 5px 0 0;
+    border-bottom: 2px solid #eef2f1;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-p {
-    margin: 0px
+h3 {
+    margin: 15px 0 5px 0;
+    color: #2a3b45;
+    font-size: 1.15em;
+}
+
+.meta-info {
+    font-size: 0.95em;
+    color: #666;
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+/* --- LISTS --- */
+ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-top: 5px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+a {
+    color: #3d7069;
+    text-decoration: none;
+    word-wrap: break-word;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: #264a45;
+    text-decoration: underline;
+}
+
+/* --- SKILLS BADGES --- */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.skill-badge {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.computational {
+    background-color: #e3f2fd;
+    color: #1565c0;
+    border: 1px solid #bbdefb;
+}
+
+.wet-lab {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+}
+
+/* --- COLLAPSIBLE ACCORDIONS --- */
+details {
+    margin-bottom: 15px;
+    background-color: #fafafa;
+    border-radius: 6px;
+    padding: 12px 18px;
+    border: 1px solid #eee;
+}
+
+details summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: #2a3b45;
+    font-size: 1.05em;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+
+details summary::before {
+    content: '\25B6'; 
+    font-size: 0.8em;
+    margin-right: 12px;
+    color: #3d7069;
+    transition: transform 0.2s;
+}
+
+details[open] summary::before {
+    transform: rotate(90deg);
+}
+
+details ol, details ul {
+    margin-top: 15px;
+    padding-left: 20px;
+    font-size: 0.95em;
+}
+
+details li {
+    margin-bottom: 12px;
+}
+
+/* --- BACK TO TOP ARROW --- */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #3d7069;
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    opacity: 0; 
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.back-to-top.visible {
+    opacity: 1; 
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background-color: #264a45;
+    transform: translateY(-3px);
+    color: white;
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 850px) {
+    .layout-container {
+        flex-direction: column;
+    }
+    
+    .content {
+        padding: 80px 20px 20px 20px; /* Slightly tighter padding for smaller screens */
+    }
+    
+    header {
+        padding: 25px;
+    }
+    
+    header h1 {
+        font-size: 2.2em;
+    }
 }
